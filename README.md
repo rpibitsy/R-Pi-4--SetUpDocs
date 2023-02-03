@@ -1,5 +1,5 @@
 # R-Pi-4--SetUpDocs
-### Install
+### Install Suggested Additional Apps
 
 I will try to ensure the following is a full set of all needed instructions.
 
@@ -9,7 +9,7 @@ mkdir temperatures
 git clone https://github.com/grayerbeard/temperatures.git /home/pi/temperatures 
 ```
 
-Install Tmux using 
+Tmux for running Python code see [https://github.com/tmux/tmux/wiki](Tmux wiki)  
 ```
 sudo apt-get install tmux
 ```
