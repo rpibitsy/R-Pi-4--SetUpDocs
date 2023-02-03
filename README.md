@@ -14,7 +14,7 @@ Then make the folder where the html files will be put writeable using
 ```
 sudo chown -R pi /var/www/html/
 ```
-#Install MQTTX for testing MQTT
+### Install MQTTX for testing MQTT
 
 Get the appimage from [MQTTX Github](https://github.com/emqx/MQTTX/releases)
 
@@ -23,9 +23,9 @@ Put in an appropriate folder and make executable using:
 ```
 chmod u+x MQTTX-1.9.1-arm64.AppImage
 ```
-Then add to the menu using the Menu Editor (found in "Preferences"
+Then add to the menu using the "Menu Editor" found under "Preferences".
 
-##Using Tmux
+### Using Tmux
 
 The way I use "tmux" there are several ways of starting python code
 ```
