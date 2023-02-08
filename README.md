@@ -8,6 +8,7 @@
 - [Install Portainer](#install-portainer)
 - [Add Docker Compose](#add-docker-compose)
 - [Add Home Assistant Container](#add-home-assistant-container)
+- [HomeAssistant Supervised on Docke](#homeassistant-supervised-on-docker)
 
 ### Install Suggested Additional Apps
 
@@ -164,3 +165,13 @@ docker run -d \
   -v /opt:/config \
   --network=host \
   ghcr.io/home-assistant/home-assistant:stable
+ 
+ ## HomeAssistant Supervised on Docker
+ 
+ This You tube Video Describes a method of installing the Home Assistant Supervisor as a docker container.
+ 
+ I have NOT tried this and do not intend to.  However this may have advantages for some people cokpared to using Portainer to organise additional facilities as the supervisor would do all the integration of the needed functions between containjers.
+ 
+ [You Tube: HomeAssistant Supervised on Docker](https://youtu.be/HPYK0uVj4Z8)
+  
+  
