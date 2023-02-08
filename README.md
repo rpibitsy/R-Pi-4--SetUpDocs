@@ -2,6 +2,7 @@
 
 ## Table of Contents
 
+- [WriteR Pi OS Image to a Device](#write-image-to-a-device)
 - [Install Suggested Additional Apps](#install-suggested-additional-apps)
 - [Install MQTTX for testing MQTT](#install-mqttx)
 - [Using Tmux](#using-tmux)
@@ -12,12 +13,90 @@
 - [HomeAssistant Supervised on Docke](#homeassistant-supervised-on-docker)
 - [Make The R Pi 4 host be "homeassistant"](#set-pi-host-to-be-homeassistant)
 
+## Write Image to a device.
+
+# Choose what to run your OS on.  
+
+Suggested choices are (with search terms "in quotes")
+
+-A large fast SD card like: "SanDisk 64GB Extreme PRO microSDXC card".
+-A fast USB drive e.g. "SanDisk 128GB Ultra Fit USB 3.1 Flash Drive"
+-An M.2 SSD and enclosre e.g. "ORICO-NVMe-Enclosure", "256GB NVMe SSD M.2 2280 Internal Solid State Drive"
+
+# Write the Raspberry Pi 64bit OS.
+
+For detailed instructions and explanations see
+
+[Raspberry Pi Website: Raspberry Pi OS](https://www.raspberrypi.com/software/)
+
+Here is suggested method and choices etc:
+
+Download to your PC the Raspberry pi Imager it is by far the best way to write Operting System images to an SD card or to USB or SSD or M.2  SSD.
+
+Download the imager using this link and install and run  [Downloads/Imager-Latest](https://downloads.raspberrypi.org/imager/imager_latest.exe)
+
+Procedure:
+-Run the imager.
+-Click on "Raspberry Pi OS (other)
+-Click on "Raspberry Pi OS (64-bit)
+-Click on the Gear Icon on the Imager icon and enter details including setting hostname to "homeassistant", Wi Fi details, password etc.
+-Click on "Choose Storage" and select you device 
+-and then Click "Write".
+
+Once write completed and verified insert the SD card or USB into the Pi and power up.  If you correctly entered the wi fo#i detals the pi should appear on you local network (check on you router or using the Android "Fing" app) as "homeassistant".   Then you con connect using an app like Termius or using the windows "Terminal(Admin)" and entering "ssh homeassistant" or "ssh <your pi's IP>.
+
+Then to use VNC, VNC needs to be enabled by entering 
+
+'''
+raspi-config
+'''
+
+and turning on VNC in the Interfaces list.
+
+Then you can connect by VNC using the RealVNC Viwere downloaded from [Real VNC Viwer Download](https://www.realvnc.com/en/connect/download/viewer/)
+
+However it much easier just to conect Keyboard Mouse and monitor, at least to start with.
+
+In the evn of any issue getting connected over Wi Fi best way is conect to the router direct with a netwok cable.
+
 ### Install Suggested Additional Apps
 
 Tmux for running Python code see [Tmux wiki](https://github.com/tmux/tmux/wiki)  
 ```
 sudo apt-get install tmux
 ```
+
+# Also one can add these:
+
+Drive Partition editor:
+
+'''
+sudo apt install gparted
+'''
+
+Firefox browser
+
+'''
+sudo apt install firefox-esr
+'''
+
+Libre Office:
+
+'''
+sudo apt install libreoffice
+'''
+
+Visual Code editor
+
+'''
+sudo apt install code
+'''
+
+Any required Python Modules such as the one for reading from temperature sensor
+
+'''
+pip3 install w1thermsensor
+'''
 
 Install nginx web server.  This sets up a local web server which allows status to be viewed in local network.  My Python code generates HTML files which get copied to /var/www/html/. Install using
 ```
