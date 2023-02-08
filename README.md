@@ -1,14 +1,16 @@
 # R-Pi-4--SetUpDocs
 
 ## Table of Contents
-- [Install Suggested Additional Apps](#install-suggested-additional=apps)
-- [Install MQTTX for testing MQTT](#install-mqtxx)
+
+- [Install Suggested Additional Apps](#install-suggested-additional-apps)
+- [Install MQTTX for testing MQTT](#install-mqttx)
 - [Using Tmux](#using-tmux)
 - [Install Docker](#install-docker)
 - [Install Portainer](#install-portainer)
 - [Add Docker Compose](#add-docker-compose)
 - [Add Home Assistant Container](#add-home-assistant-container)
 - [HomeAssistant Supervised on Docke](#homeassistant-supervised-on-docker)
+- [Make The R Pi 4 host be "homeassistant"](#set-pi-to-be-"homeassistant"]
 
 ### Install Suggested Additional Apps
 
@@ -25,7 +27,9 @@ Then make the folder where the html files will be put writeable using
 ```
 sudo chown -R pi /var/www/html/
 ```
-### Install MQTTX for testing MQTT
+### Install MQTTX
+
+This can only be installed as an App Image.
 
 Get the appimage from [MQTTX Github](https://github.com/emqx/MQTTX/releases)
 
@@ -34,6 +38,8 @@ Put in an appropriate folder and make executable using:
 ```
 chmod u+x MQTTX-1.9.1-arm64.AppImage
 ```
+(after changing t the folder where it was put)
+
 Then add to the menu using the "Menu Editor" found under "Preferences".
 
 ### Using Tmux
@@ -92,60 +98,98 @@ tmux a
  ```
 ## Install Docker
 
-install docker as per .....
-https://pimylifeup.com/raspberry-pi-docker/
+For detailed information and explanation  see 
+[Pi My Life Up : Raspberry Pi Docker](https://pimylifeup.com/raspberry-pi-docker/)
 
+Here are the commands he suggests:
+
+First make sure up to date:
+'''
 sudo apt update
 sudo apt upgrade
+'''
 
+Then
+
+'''
 curl -sSL https://get.docker.com | sh
-docker run hello-world
+'''
 
+Then add the the "pi" user to the "docker" group with
 
+'''
+sudo usermod -aG docker pi
+'''
+
+then rboot
+
+'''
 reboot
+'''
+
+and check the group change worked with
+
+'''
 groups
+'''
 
-(check docker in list of groups)
+Docker should be in the list.
 
-simple check
+Then check docker installed OK using the "Hullo World Container"
 
-
+'''
 docker run hello-world
+'''
+
+###Set Pi To Be "homeassistant"
+
+On pi select menu Preferences/Raspberry Pi Configuration.
+
+Then select System/Change Hostname
+
+Then enter "homeassistant".
+
+Then click "OK" twice and reboot.
+
+Now to view the Pis web site you can just use {http://homeassistant.local:8123) or {http://homeassistant.local:9000) or {http://homeassistant.local) depending whether wanting Home Assistant, Portainer or its nginx website.
 
 ## Install Portainer
 
-install portainer as per 
+For detailed explanationms and instructions see  
 
-https://pimylifeup.com/raspberry-pi-portainer/
+[Pi My Life Up :: Raspberry Pi Portainer](https://pimylifeup.com/raspberry-pi-portainer/)
 
-download latest portainer iage with 
+Add the portainer as a docker container with
 
+'''
 sudo docker pull portainer/portainer-ce:latest
+'''
 
-Telling Docker to run this container ....
-
+Tell Docker to run this container using  ....
+'''
 sudo docker run -d -p 9000:9000 --name=portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce:latest
+'''
 
-now connect with   http://[PIIPADDRESS]:9000
+now connect with   (http://[PIIPADDRESS]:9000)  or if you have use [Make The R Pi 4 host be "homeassistant"](#set-pi-to-be-"homeassistant"] below conect with (http://homeassistant.local:9000).  You could also use  http://localhost:9000/..
 
-or on pi with http://localhost:9000/
-
-now assign user name :  rpibitsy
-
-and used password:    bitsybonerpi
+now assign user name and password. 
 
 ## Add Docker Compose
 
 add docker compose with
 
+'''
 sudo apt-get install docker-compose
+'''
 
 ## Add Home Assistant Container
 
-followed Homeassistant container instructions from 
-https://www.homeassistant.io/installation/raspberrypi
+For detailed info and explanations see 
+[Home Assistant / Raspberry Pi / Container](https://www.home-assistant.io/installation/raspberrypi#install-home-assistant-container)
 
+They sugeested adding with
 
+'''
 docker run -d \
   --name homeassistant \
   --privileged \
@@ -154,9 +198,11 @@ docker run -d \
   -v /PATH_TO_YOUR_CONFIG:/config \
   --network=host \
   ghcr.io/home-assistant/home-assistant:stable
+ ''' 
   
-chasnged to
+which it is suggested should be changed to 
 
+'''
 docker run -d \
   --name homeassistant \
   --privileged \
@@ -165,6 +211,10 @@ docker run -d \
   -v /opt:/config \
   --network=host \
   ghcr.io/home-assistant/home-assistant:stable
+  '''
+ 
+ Then, simmilar to Portainer, connect using (http://homeassistant.local:8123) or (http://localhost:8123) if using the browser on the pi itself.
+ 
  
  ## HomeAssistant Supervised on Docker
  
@@ -174,4 +224,14 @@ docker run -d \
  
  [You Tube: HomeAssistant Supervised on Docker](https://youtu.be/HPYK0uVj4Z8)
   
-  
+###Set Pi To Be "homeassistant"
+
+On pi select menu Preferences/Raspberry Pi Configuration.
+
+Then select System/Change Hostname
+
+Then enter "homeassistant".
+
+Then click "OK" twice and reboot.
+
+Now to view the Pis web site you can just use {http://homeassistant.local:8123) or {http://homeassistant.local:9000) or {http://homeassistant.local) depending whether wanting Home Assistant, Portainer or its nginx website.
