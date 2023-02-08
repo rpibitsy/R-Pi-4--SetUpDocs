@@ -10,7 +10,7 @@
 - [Add Docker Compose](#add-docker-compose)
 - [Add Home Assistant Container](#add-home-assistant-container)
 - [HomeAssistant Supervised on Docke](#homeassistant-supervised-on-docker)
-- [Make The R Pi 4 host be "homeassistant"](#set-pi-host-to-be-homeassistant]
+- [Make The R Pi 4 host be "homeassistant"](#set-pi-host-to-be-homeassistant)
 
 ### Install Suggested Additional Apps
 
@@ -224,7 +224,7 @@ docker run -d \
  
  [You Tube: HomeAssistant Supervised on Docker](https://youtu.be/HPYK0uVj4Z8)
   
-##Set Pi Host to be homeassistant
+## Set Pi Host to be homeassistant
 
 On pi select menu Preferences/Raspberry Pi Configuration.
 
@@ -234,4 +234,4 @@ Then enter "homeassistant".
 
 Then click "OK" twice and reboot.
 
-Now to view the Pis web site you can just use {http://homeassistant.local:8123) or {http://homeassistant.local:9000) or {http://homeassistant.local) depending whether wanting Home Assistant, Portainer or its nginx website.
+Now to view Portainer, Home Assistant or the Pis web site you can just use {http://homeassistant.local:8123) or {http://homeassistant.local:9000) or {http://homeassistant.local).
