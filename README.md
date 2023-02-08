@@ -1,4 +1,14 @@
 # R-Pi-4--SetUpDocs
+
+## Table of Contents
+- [Install Suggested Additional Apps](#install-suggested-additional=apps)
+- [Install MQTTX for testing MQTT](#install-mqtxx)
+- [Using Tmux](#using-tmux)
+- [Install Docker](#install-docker)
+- [Install Portainer](#install-portainer)
+- [Add Docker Compose](#add-docker-compose)
+- [Add Home Assistant Container](#add-home-assistant-container)
+
 ### Install Suggested Additional Apps
 
 Tmux for running Python code see [Tmux wiki](https://github.com/tmux/tmux/wiki)  
@@ -79,4 +89,78 @@ or just this if only one tmux session in use
  ```
 tmux a
  ```
+## Install Docker
 
+install docker as per .....
+https://pimylifeup.com/raspberry-pi-docker/
+
+sudo apt update
+sudo apt upgrade
+
+curl -sSL https://get.docker.com | sh
+docker run hello-world
+
+
+reboot
+groups
+
+(check docker in list of groups)
+
+simple check
+
+
+docker run hello-world
+
+## Install Portainer
+
+install portainer as per 
+
+https://pimylifeup.com/raspberry-pi-portainer/
+
+download latest portainer iage with 
+
+sudo docker pull portainer/portainer-ce:latest
+
+Telling Docker to run this container ....
+
+sudo docker run -d -p 9000:9000 --name=portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce:latest
+
+now connect with   http://[PIIPADDRESS]:9000
+
+or on pi with http://localhost:9000/
+
+now assign user name :  rpibitsy
+
+and used password:    bitsybonerpi
+
+## Add Docker Compose
+
+add docker compose with
+
+sudo apt-get install docker-compose
+
+## Add Home Assistant Container
+
+followed Homeassistant container instructions from 
+https://www.homeassistant.io/installation/raspberrypi
+
+
+docker run -d \
+  --name homeassistant \
+  --privileged \
+  --restart=unless-stopped \
+  -e TZ=MY_TIME_ZONE \
+  -v /PATH_TO_YOUR_CONFIG:/config \
+  --network=host \
+  ghcr.io/home-assistant/home-assistant:stable
+  
+chasnged to
+
+docker run -d \
+  --name homeassistant \
+  --privileged \
+  --restart=unless-stopped \
+  -e TZ=GB \
+  -v /opt:/config \
+  --network=host \
+  ghcr.io/home-assistant/home-assistant:stable
