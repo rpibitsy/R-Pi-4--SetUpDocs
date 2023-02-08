@@ -10,7 +10,7 @@
 - [Add Docker Compose](#add-docker-compose)
 - [Add Home Assistant Container](#add-home-assistant-container)
 - [HomeAssistant Supervised on Docke](#homeassistant-supervised-on-docker)
-- [Make The R Pi 4 host be "homeassistant"](#set-pi-to-be-"homeassistant"]
+- [Make The R Pi 4 host be "homeassistant"](#set-pi-host-to-be-homeassistant]
 
 ### Install Suggested Additional Apps
 
@@ -224,7 +224,7 @@ docker run -d \
  
  [You Tube: HomeAssistant Supervised on Docker](https://youtu.be/HPYK0uVj4Z8)
   
-###Set Pi To Be "homeassistant"
+##Set Pi Host to be homeassistant
 
 On pi select menu Preferences/Raspberry Pi Configuration.
 
