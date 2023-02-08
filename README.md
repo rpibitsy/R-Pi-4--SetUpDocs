@@ -170,9 +170,9 @@ Tell Docker to run this container using  ....
 sudo docker run -d -p 9000:9000 --name=portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce:latest
 '''
 
-now connect with   (http://[PIIPADDRESS]:9000)  or if you have use [Make The R Pi 4 host be "homeassistant"](#set-pi-to-be-"homeassistant"] below conect with (http://homeassistant.local:9000).  You could also use  http://localhost:9000/..
+now connect with   (http://[PIIPADDRESS]:9000)  or if you have used [Set Pi Host to be homeassistant](#set-pi-host-to-be-homeassistant) below you can conect with (http://homeassistant.local:9000).  You could also use  http://localhost:9000/ if you are using the pis own browser.
 
-now assign user name and password. 
+now assign user name and password and start detailked set up of required functioningality. 
 
 ## Add Docker Compose
 
