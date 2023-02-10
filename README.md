@@ -47,9 +47,9 @@ Once write completed and verified insert the SD card or USB into the Pi and powe
 
 Then to use VNC, VNC needs to be enabled by entering 
 
-'''
+```
 raspi-config
-'''
+```
 
 and turning on VNC in the Interfaces list.
 
@@ -63,50 +63,49 @@ In the evn of any issue getting connected over Wi Fi best way is conect to the r
 
 Tmux for running Python code see [Tmux wiki](https://github.com/tmux/tmux/wiki)  
 ```
-sudo apt-get install tmux
+sudo apt-get install tmu
 ```
-
-# Also one can add these:
 
 Drive Partition editor:
 
-'''
+```
 sudo apt install gparted
-'''
+```
 
 Firefox browser
 
-'''
+```
 sudo apt install firefox-esr
-'''
+```
 
 Libre Office:
 
-'''
+```
 sudo apt install libreoffice
-'''
+```
 
 Visual Code editor
 
-'''
+```
 sudo apt install code
-'''
+```
 
 Any required Python Modules such as the one for reading from temperature sensor
 
-'''
+```
 pip3 install w1thermsensor
-'''
+```
 
 Install nginx web server.  This sets up a local web server which allows status to be viewed in local network.  My Python code generates HTML files which get copied to /var/www/html/. Install using
 ```
 sudo apt install nginx
 ```
+
 Then make the folder where the html files will be put writeable using
 ```
 sudo chown -R pi /var/www/html/
 ```
-### Install MQTTX
+## Install MQTTX
 
 This can only be installed as an App Image.
 
@@ -183,44 +182,44 @@ For detailed information and explanation  see
 Here are the commands he suggests:
 
 First make sure up to date:
-'''
+```
 sudo apt update
 sudo apt upgrade
-'''
+```
 
 Then
 
-'''
+```
 curl -sSL https://get.docker.com | sh
-'''
+```
 
 Then add the the "pi" user to the "docker" group with
 
-'''
+```
 sudo usermod -aG docker pi
-'''
+```
 
 then rboot
 
-'''
+```
 reboot
-'''
+```
 
 and check the group change worked with
 
-'''
+```
 groups
-'''
+```
 
 Docker should be in the list.
 
 Then check docker installed OK using the "Hullo World Container"
 
-'''
+```
 docker run hello-world
-'''
+```
 
-###Set Pi To Be "homeassistant"
+### Set Pi hostname  To Be "homeassistant"
 
 On pi select menu Preferences/Raspberry Pi Configuration.
 
@@ -240,14 +239,14 @@ For detailed explanationms and instructions see
 
 Add the portainer as a docker container with
 
-'''
+```
 sudo docker pull portainer/portainer-ce:latest
-'''
+```
 
 Tell Docker to run this container using  ....
-'''
+```
 sudo docker run -d -p 9000:9000 --name=portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce:latest
-'''
+```
 
 now connect with   (http://[PIIPADDRESS]:9000)  or if you have used [Set Pi Host to be homeassistant](#set-pi-host-to-be-homeassistant) below you can conect with (http://homeassistant.local:9000).  You could also use  http://localhost:9000/ if you are using the pis own browser.
 
@@ -257,9 +256,9 @@ now assign user name and password and start detailked set up of required functio
 
 add docker compose with
 
-'''
+```
 sudo apt-get install docker-compose
-'''
+```
 
 ## Add Home Assistant Container
 
@@ -268,7 +267,7 @@ For detailed info and explanations see
 
 They sugeested adding with
 
-'''
+```
 docker run -d \
   --name homeassistant \
   --privileged \
@@ -277,7 +276,7 @@ docker run -d \
   -v /PATH_TO_YOUR_CONFIG:/config \
   --network=host \
   ghcr.io/home-assistant/home-assistant:stable
- ''' 
+ ```
   
 which it is suggested should be changed to this not the config is copied to a directory in .config as pi uswer can edit that.
 some sites suggest put in /opt but thats tricky for editing
