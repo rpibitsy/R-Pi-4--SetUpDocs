@@ -279,19 +279,21 @@ docker run -d \
   ghcr.io/home-assistant/home-assistant:stable
  ''' 
   
-which it is suggested should be changed to 
+which it is suggested should be changed to this not the config is copied to a directory in .config as pi uswer can edit that.
+some sites suggest put in /opt but thats tricky for editing
 
-'''
+```
 docker run -d \
   --name homeassistant \
   --privileged \
   --restart=unless-stopped \
-  -e TZ=GB \
-  -v /opt:/config \
+  -p 8123:8123 \
+  -e TZ="Europe/London" \
+  -v /home/pi/.config/homeassistant/config:/config \
   --network=host \
   ghcr.io/home-assistant/home-assistant:stable
-  '''
- 
+````
+
  Then, simmilar to Portainer, connect using (http://homeassistant.local:8123) or (http://localhost:8123) if using the browser on the pi itself.
  
  
